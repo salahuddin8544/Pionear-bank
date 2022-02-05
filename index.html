@@ -81,8 +81,11 @@
         // withdraw even listner 
         const withdrawbtn =  document.getElementById("addWithdraw");
         withdrawbtn.addEventListener("click", function(){
-            const withdrawNumber = getInputNumber("withdrawAmount")
-            console.log(withdrawNumber)
+            const withdrawNumber = getInputNumber("withdrawAmount");
+            updateSpanText("currentWithdraw",withdrawNumber);
+            updateSpanText("currentBalance",-1 * withdrawNumber)
+
+            document.getElementById("withdrawAmount").value = "";
         })
         function getInputNumber(id){
             const Amount = document.getElementById(id).value;
@@ -90,10 +93,10 @@
             return AmountNumber;
         }
 
-        function updateSpanText(id,depositNumber){
+        function updateSpanText(id,addedNumber){
             const current= document.getElementById(id).innerText;
             const currenNumber = parseFloat(current);
-            const totalAmount = depositNumber + currenNumber;
+            const totalAmount = addedNumber + currenNumber;
             document.getElementById(id).innerText = totalAmount;
         }
     </script>
